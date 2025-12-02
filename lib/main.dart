@@ -17,6 +17,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    int imageSize = 60;
+
     int selectedIndex = 0;
     return MaterialApp(
       home: Scaffold(
@@ -49,7 +51,42 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
-
+                    Positioned(
+                      left: 20,
+                      top: size.height / 2.1 - 90,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            style: (TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            )),
+                            travelList[selectedIndex].name,
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8.0),
+                                child: Icon(
+                                  CupertinoIcons.location_solid,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                style: (TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                                travelList[selectedIndex].location,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                     // Top bar with icons
                     Positioned(
                       top: 0,
@@ -80,6 +117,56 @@ class _MyAppState extends State<MyApp> {
                             ),
                           ],
                         ),
+                      ),
+                    ),
+
+                    // Image list on the right side
+                    Positioned(
+                      top: 80,
+                      right: 20,
+                      left: 10,
+                      child: ListView.builder(
+                        itemCount: travelList.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            onTap: () {
+                              print('Tapped on ${travelList[index].name}');
+                            },
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: AnimatedContainer(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: selectedIndex == index
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        width: 4,
+                                      ),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    duration: Duration(milliseconds: 300),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(16),
+                                      child: Image.asset(
+                                        travelList[index].imageUrl,
+                                        width: selectedIndex == index
+                                            ? imageSize.toDouble() + 10
+                                            : imageSize.toDouble(),
+                                        height: selectedIndex == index
+                                            ? imageSize.toDouble() + 10
+                                            : imageSize.toDouble(),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],
