@@ -15,11 +15,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int selectedIndex = 0;
+  int imageSize = 60;
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    int imageSize = 60;
 
     return MaterialApp(
       home: Scaffold(
@@ -121,57 +121,7 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ),
                     // Image list on the right side
-                    Positioned(
-                      top: 80,
-                      right: 20,
-                      child: SizedBox(
-                        height: double.maxFinite,
-                        width: 90,
-                        child: ListView.builder(
-                          itemCount: travelList.length,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                print('Tapped on ${travelList[index].name}');
-                                setState(() {
-                                  selectedIndex = index;
-                                });
-                              },
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: AnimatedContainer(
-                                      width: selectedIndex == index
-                                          ? imageSize + 10
-                                          : imageSize.toDouble(),
-                                      height: selectedIndex == index
-                                          ? imageSize + 10
-                                          : imageSize.toDouble(),
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Colors.white,
-                                          width: selectedIndex == index ? 2 : 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(10),
-                                        image: DecorationImage(
-                                          image: AssetImage(
-                                            travelList[index].imageUrl,
-                                          ),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      duration: Duration(milliseconds: 300),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
+                    Positioned(top: 80, right: 20, child: ImageItems()),
                   ],
                 ),
               ),
@@ -181,6 +131,54 @@ class _MyAppState extends State<MyApp> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget ImageItems() {
+    return SizedBox(
+      height: double.maxFinite,
+      width: 90,
+      child: ListView.builder(
+        itemCount: travelList.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () {
+              print('Tapped on ${travelList[index].name}');
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: AnimatedContainer(
+                    width: selectedIndex == index
+                        ? imageSize + 10
+                        : imageSize.toDouble(),
+                    height: selectedIndex == index
+                        ? imageSize + 10
+                        : imageSize.toDouble(),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.white,
+                        width: selectedIndex == index ? 2 : 1,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                        image: AssetImage(travelList[index].imageUrl),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    duration: Duration(milliseconds: 300),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
