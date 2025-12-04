@@ -141,155 +141,206 @@ class _MyAppState extends State<MyApp> {
                   ],
                 ),
               ),
-              SingleChildScrollView(
-                child: Container(
-                  color: Colors.white,
-                  width: double.infinity,
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              side: BorderSide(width: 1, color: Colors.grey),
-                            ),
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              color: Colors.white,
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      1,
-                                      10,
-                                      1,
-                                      1,
-                                    ),
-                                    child: Text('Distance'),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      1,
-                                      10,
-                                      1,
-                                      1,
-                                    ),
-                                    child: Text(
-                                      travelList[selectedIndex].distance +
-                                          " KM",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              side: BorderSide(width: 1, color: Colors.grey),
-                            ),
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              color: Colors.white,
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      1,
-                                      10,
-                                      1,
-                                      1,
-                                    ),
-                                    child: Text('Temperature'),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      1,
-                                      10,
-                                      1,
-                                      1,
-                                    ),
-                                    child: Text(
-                                      travelList[selectedIndex].temp + " °C",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              side: BorderSide(width: 1, color: Colors.grey),
-                            ),
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              color: Colors.white,
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      1,
-                                      10,
-                                      1,
-                                      1,
-                                    ),
-                                    child: Text('Rating'),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      1,
-                                      10,
-                                      1,
-                                      1,
-                                    ),
-                                    child: Text(
-                                      travelList[selectedIndex].rating,
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    color: Colors.white,
+                    width: double.infinity,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text('Description'),
-
-                            Container(
-                              height: 150,
-                              child: ExpandableText(
-                                travelList[selectedIndex].description,
-                                expandText: 'show more',
-                                collapseText: 'show less',
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                side: BorderSide(width: 1, color: Colors.grey),
+                              ),
+                              child: Container(
+                                height: 100,
+                                width: 100,
+                                color: Colors.white,
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                        1,
+                                        10,
+                                        1,
+                                        1,
+                                      ),
+                                      child: Text('Distance'),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                        1,
+                                        10,
+                                        1,
+                                        1,
+                                      ),
+                                      child: Text(
+                                        travelList[selectedIndex].distance +
+                                            " KM",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                side: BorderSide(width: 1, color: Colors.grey),
+                              ),
+                              child: Container(
+                                height: 100,
+                                width: 100,
+                                color: Colors.white,
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                        1,
+                                        10,
+                                        1,
+                                        1,
+                                      ),
+                                      child: Text('Temperature'),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                        1,
+                                        10,
+                                        1,
+                                        1,
+                                      ),
+                                      child: Text(
+                                        travelList[selectedIndex].temp + " °C",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                side: BorderSide(width: 1, color: Colors.grey),
+                              ),
+                              child: Container(
+                                height: 100,
+                                width: 100,
+                                color: Colors.white,
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                        1,
+                                        10,
+                                        1,
+                                        1,
+                                      ),
+                                      child: Text('Rating'),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                        1,
+                                        10,
+                                        1,
+                                        1,
+                                      ),
+                                      child: Text(
+                                        travelList[selectedIndex].rating,
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
                         ),
-                      ),
-                    ],
+
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Description',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+
+                              Container(
+                                child: ExpandableText(
+                                  travelList[selectedIndex].description,
+                                  expandText: 'show more',
+                                  collapseText: 'show less',
+                                  linkColor: Colors.blue,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Price',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                                child: Text(
+                                  '\$' + travelList[selectedIndex].price,
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                print(
+                                  'Book Now pressed for ${travelList[selectedIndex].name}',
+                                );
+                              },
+                              child: Text('Book Now'),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 20),
+                      ],
+                    ),
                   ),
                 ),
               ),
